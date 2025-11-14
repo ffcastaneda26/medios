@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('contact_person')->nullable();
             $table->string('logo')->nullable();
             $table->string('website')->nullable();
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->boolean('active')->default(1)->comment('¿Está activo?');
             $table->date('contract_start')->nullable();
             $table->date('contract_end')->nullable();
         });

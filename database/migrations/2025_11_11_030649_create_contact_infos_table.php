@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('contact_infos', function (Blueprint $table) {
             $table->id();
-            $table->string('phone')->nullable();
-            $table->string('email')->nullable();
-            $table->text('address')->nullable();
-            $table->string('social_facebook')->nullable();
-            $table->string('social_instagram')->nullable();
-            $table->string('social_tiktok')->nullable();
-            $table->string('social_twitter')->nullable();
-            $table->text('about_text')->nullable();
+            $table->string('phone', 20)->nullable()->comment('Teléfono');
+            $table->string('email')->nullable()->comment('Correo Electrónico');
+            $table->text('address', 100)->nullable()->comment('Dirección');
+            $table->string('social_facebook', 100)->nullable()->comment('Facebook');
+            $table->string('social_instagram', 100)->nullable()->comment('Instagram');
+            $table->string('social_tiktok', 100)->nullable()->comment('Tiktok');
+            $table->string('social_twitter', 100)->nullable()->comment('Twitter (X)');
+            $table->string('social_youtube', 100)->nullable()->comment('Youtube');
+            $table->text('about_text')->nullable()->comment('Acerca de nosotros');
             $table->timestamps();
         });
     }

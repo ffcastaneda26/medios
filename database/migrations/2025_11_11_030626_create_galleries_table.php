@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->string('slug')->unique();
-            $table->boolean('is_featured')->default(false);
+            $table->string('title', 150)->comment('Título');
+            $table->text('description')->nullable()->comment('Descripción');
+            $table->string('slug')->unique()->comment('Slug');
+            $table->boolean('is_featured')->default(false)->comment('¿Presentado?');
         });
     }
 

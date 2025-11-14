@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('news_videos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('news_id')->constrained()->onDelete('cascade');
-            $table->string('video_url');
-            $table->enum('video_type', ['youtube', 'vimeo', 'upload'])->default('youtube');
-            $table->string('title')->nullable();
+            $table->foreignId('news_id')->constrained()->onDelete('cascade')->comment('Noticia');
+            $table->string('video_url')->comment('Liga URL del a imagen');
+            $table->enum('video_type', ['youtube', 'vimeo', 'upload'])->default('youtube')->comment('Tipo de video');
+            $table->string('title', 150)->nullable()->comment('Título');
             $table->timestamps();
         });
     }

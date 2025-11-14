@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('news_social_links', function (Blueprint $table) {
             $table->id();
             $table->foreignId('news_id')->constrained()->onDelete('cascade');
-            $table->enum('platform', ['facebook', 'instagram', 'tiktok', 'twitter', 'other']);
-            $table->string('url');
+            $table->enum('platform', ['facebook', 'instagram', 'tiktok', 'twitter', 'other'])->comment('Plataforma');
+            $table->string('url')->comment('Liga');
         });
     }
 
