@@ -12,6 +12,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Str;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class NewsForm
 {
@@ -52,35 +53,51 @@ class NewsForm
                             'required' => 'El Subtítulo de la noticia es obligatorio.',
                             'max' => 'El Subtítulo no puede superar :max caracteres.',
                         ]),
-                    FileUpload::make('featured_image')
-                        ->image(),
+                    Select::make('status')
+                        ->label('Estado')
+                        ->options(NewStatusEnum::class)
+                        ->required()
+                        ->default(NewStatusEnum::BORRADOR->value)
+                        ->native(false),
+                    DateTimePicker::make('published_at')
+                        ->label('Publicada el'),
                 ]),
                 Group::make()->schema([
                     Select::make('category_id')
                         ->relationship('category', 'name')
                         ->label('Categoría')
                         ->required(),
-                    DateTimePicker::make('published_at')
-                        ->label('Publicada el'),
-                    Select::make('status')
-                        ->label('Estado')
-                        // ->options([
-                        //     NewStatusEnum::BORRADOR->value => NewStatusEnum::BORRADOR->getLabel(),
-                        //     NewStatusEnum::PUBLICADA->value => NewStatusEnum::PUBLICADA->getLabel(),
-                        //     NewStatusEnum::ARCHIVADA->value => NewStatusEnum::ARCHIVADA->getLabel(),
-                        // ])
-                        ->options(NewStatusEnum::class)
+                    FileUpload::make('featured_image')
+                        ->label('Imagen Destacada')
+                        ->image()
+                        ->imageEditor()
+                        ->imageEditorViewportWidth('1200')
+                        ->imageEditorViewportHeight('800')
+                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/jpg'])
+                        ->disk('public') // ✅ Disco público
+                        ->directory('news') // ✅ Subdirectorio específico
+                        ->visibility('public') // ✅ IMPORTANTE: Visibilidad pública
+                        ->maxSize(5120) // 5MB
+                        ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
+                            $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                            $sanitizedName = Str::slug($originalName);
+                            $extension = $file->getClientOriginalExtension();
 
-                        ->required()
-                        ->default(NewStatusEnum::BORRADOR->value)
-                        ->native(false),
+                            return time().'_'.$sanitizedName.'.'.$extension;
+                        })
+                        ->helperText('Tamaño máximo: 5MB. Formatos: JPG, PNG, WebP'),
 
                 ]),
+                Group::make()->schema([
+                    RichEditor::make('body')
+                        ->label('Contenido')
+                        ->required()
+                        ->extraAttributes([
+                            'style' => 'height: 200px; overflow-y: auto;',
+                        ]),
 
-                RichEditor::make('body')
-                    ->label('Contenido')
-                    ->required()
-                    ->columnSpanFull(),
+                ])->columnSpanFull(),
+
             ]);
     }
 }

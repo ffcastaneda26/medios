@@ -10,6 +10,8 @@ class NewsImage extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'news_id',
         'image_path',

@@ -13,14 +13,15 @@ class NewsTable
     {
         return $table
             ->columns([
+                ImageColumn::make('featured_image')
+                    ->label('Imagen Principal')
+                    ->disk('public'),
                 TextColumn::make('category.name')
                     ->label('Categoría')
                     ->searchable(),
                 TextColumn::make('title')
                     ->label('Título')
                     ->searchable(),
-                ImageColumn::make('featured_image')
-                    ->label('Imagen Principal'),
 
                 TextColumn::make('status')
                     ->label('Estado')

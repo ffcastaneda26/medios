@@ -5,6 +5,7 @@ namespace App\Filament\Resources\News;
 use App\Filament\Resources\News\Pages\CreateNews;
 use App\Filament\Resources\News\Pages\EditNews;
 use App\Filament\Resources\News\Pages\ListNews;
+use App\Filament\Resources\News\RelationManagers\ImagesRelationManager;
 use App\Filament\Resources\News\Schemas\NewsForm;
 use App\Filament\Resources\News\Tables\NewsTable;
 use App\Models\News;
@@ -50,7 +51,7 @@ class NewsResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            'images' => ImagesRelationManager::class,
         ];
     }
 
