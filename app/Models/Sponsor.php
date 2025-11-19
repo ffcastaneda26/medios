@@ -17,9 +17,9 @@ class Sponsor extends Model
         'contact_person',
         'logo',
         'website',
-        'status',
         'contract_start',
         'contract_end',
+        'active',
     ];
 
     protected $casts = [
@@ -34,6 +34,6 @@ class Sponsor extends Model
 
     public function scopeActive($query)
     {
-        return $query->where('status', 'active');
+        return $query->where('active', true);
     }
 }

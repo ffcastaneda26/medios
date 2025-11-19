@@ -72,7 +72,7 @@ class News extends Model
 
     public function scopePublished($query)
     {
-        return $query->where('status', 'published')
+        return $query->where('status', 'publicada')
             ->whereNotNull('published_at')
             ->where('published_at', '<=', now());
     }
