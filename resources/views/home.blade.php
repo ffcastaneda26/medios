@@ -154,15 +154,15 @@
                 <!-- Últimas Noticias (Sidebar) -->
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-bold mb-4 pb-2 border-b-2 border-red-600">
-                        <i class="fas fa-fire text-red-600 mr-2"></i>Trending
+                        <i class="fas fa-fire text-red-600 mr-2"></i>LAS MAS VISTAS
                     </h3>
                     <div class="space-y-4">
-                        @foreach ($news->sortByDesc('views_count')->take(5) as $index => $trendingNews)
+                        @foreach ($news->sortByDesc('views_count')->take(5) as $trendingNews)
                             <article class="group cursor-pointer">
                                 <a href="/noticia/{{ $trendingNews->slug }}" class="flex gap-3">
                                     <span
                                         class="flex-shrink-0 text-3xl font-bold text-gray-300 group-hover:text-red-600 transition-colors">
-                                        {{ $index + 1 }}
+                                        {{ $loop->index + 1 }}
                                     </span>
                                     <div>
                                         <span class="text-red-600 text-xs font-bold uppercase">
@@ -183,7 +183,7 @@
                 </div>
 
                 <!-- Categorías Populares -->
-                <div class="bg-white rounded-lg shadow-md p-6">
+                {{-- <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-bold mb-4 pb-2 border-b-2 border-red-600">Secciones</h3>
                     <div class="space-y-2">
                         @foreach ($categories as $category)
@@ -196,7 +196,7 @@
                             </a>
                         @endforeach
                     </div>
-                </div>
+                </div> --}}
 
             </aside>
         </div>

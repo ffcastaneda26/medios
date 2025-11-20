@@ -74,7 +74,7 @@
                 @endif
 
                 <!-- Otras Categorías -->
-                <div class="bg-white rounded-lg shadow-md p-6">
+                {{-- <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-bold mb-4 pb-2 border-b-2 border-red-600">Otras Secciones</h3>
                     <div class="space-y-2">
                         @foreach ($categories->where('id', '!=', $category->id) as $otherCategory)
@@ -87,7 +87,7 @@
                             </a>
                         @endforeach
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Últimas Noticias Globales -->
                 <div class="bg-white rounded-lg shadow-md p-6">
