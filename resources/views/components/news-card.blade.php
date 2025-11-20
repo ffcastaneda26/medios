@@ -25,13 +25,16 @@
             @if ($variant === 'horizontal')
                 <!-- Imagen Horizontal -->
                 <div class="flex-shrink-0 w-32 h-24 overflow-hidden rounded">
-                    <img src="{{ Storage::url($news->featured_image) }}" alt="{{ $news->title }}"
+                    <p>Para monitoriear línea 28</p>
+                    <img src="{{ Storage::url($news->featured_image) }}" alt="Línea 29"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
             @elseif($variant === 'featured')
                 <!-- Imagen Featured (Grande) -->
                 <div class="relative overflow-hidden h-96">
-                    <img src="{{ Storage::url($news->featured_image) }}" alt="{{ $news->title }}"
+                    <p>Para monitoriear línea 35</p>
+
+                    <img src="{{ asset('storage/' . $news->featured_image) }}" alt="Línea 37"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
 
 
@@ -56,8 +59,7 @@
 
                         @if ($showMeta)
                             <div class="flex items-center gap-4 text-gray-300 text-xs">
-                                <span><i
-                                        class="far fa-clock mr-1"></i>{{ $news->published_at->diffForHumans() }}</span>
+                                <span><i class="far fa-clock mr-1"></i>{{ $news->published_at->diffForHumans() }}</span>
                                 <span><i class="far fa-eye mr-1"></i>{{ number_format($news->views_count) }}
                                     vistas</span>
                             </div>
@@ -67,7 +69,9 @@
             @else
                 <!-- Imagen Default -->
                 <div class="relative overflow-hidden h-48">
-                    <img src="{{ Storage::url($news->featured_image) }}" alt="{{ $news->title }}"
+                    <p>Para monitoriear línea 72</p>
+
+                    <img src="{{ asset('storage/' . $news->featured_image) }}" alt="Línea 72"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
 
                     @if ($showCategory)
@@ -79,7 +83,6 @@
                 </div>
             @endif
         @endif
-
         @if ($variant !== 'featured')
             <!-- Contenido de la tarjeta -->
             <div class="{{ $variant === 'horizontal' ? 'flex-1' : 'p-4' }}">
