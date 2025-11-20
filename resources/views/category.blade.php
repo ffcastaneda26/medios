@@ -26,7 +26,7 @@
                 <div class="flex items-center justify-center gap-6 overflow-x-auto">
                     @foreach ($sponsors->take(3) as $sponsor)
                         <a href="{{ $sponsor->website }}" target="_blank" class="flex-shrink-0">
-                            <img src="{{ $sponsor->logo }}" alt="{{ $sponsor->name }}"
+                            <img src="{{ Storage::url($sponsor->logo) }}" alt="{{ $sponsor->name }}"
                                 class="h-20 object-contain hover:opacity-80 transition-opacity">
                         </a>
                     @endforeach
@@ -67,7 +67,7 @@
                     <div class="bg-white rounded-lg shadow-md p-4 sticky top-4">
                         <p class="text-xs text-gray-500 text-center mb-2">PUBLICIDAD</p>
                         <a href="{{ $sponsors->skip(3)->first()->website }}" target="_blank">
-                            <img src="{{ $sponsors->skip(3)->first()->logo }}" alt="Patrocinador"
+                            <img src="{{ Storage::url($sponsors->skip(3)->first()->logo) }}" alt="Patrocinador"
                                 class="w-full h-auto object-contain hover:opacity-80 transition-opacity">
                         </a>
                     </div>
