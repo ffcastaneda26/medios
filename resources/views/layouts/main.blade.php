@@ -21,8 +21,7 @@
                     <!-- Logo -->
                     <div class="flex-shrink-0">
                         <a href="/" class="flex items-center">
-                            <img src="{{ Storage::url($contactInfo->logo) }}" alt="Logo" class="h-12 md:h-16">
-
+                            <img src="{{ Storage::url($contactInfo->logo) }}" alt="Logo" class="h-12 md:h-24">
                         </a>
                     </div>
 

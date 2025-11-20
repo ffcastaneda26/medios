@@ -69,9 +69,8 @@
             @else
                 <!-- Imagen Default -->
                 <div class="relative overflow-hidden h-48">
-                    <p>Para monitoriear línea 72</p>
 
-                    <img src="{{ asset('storage/' . $news->featured_image) }}" alt="Línea 72"
+                    <img src="{{ Storage::url($news->featured_image) }}" alt="{{ $news->title }}"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
 
                     @if ($showCategory)

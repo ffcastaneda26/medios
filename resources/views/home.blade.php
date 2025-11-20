@@ -31,7 +31,8 @@
                     <article class="bg-white rounded-lg shadow-md overflow-hidden group cursor-pointer">
                         <a href="/noticia/{{ $featuredNews->slug }}">
                             <div class="relative overflow-hidden h-96">
-                                <img src="{{ $featuredNews->featured_image }}" alt="{{ $featuredNews->title }}"
+                                <img src="{{ Storage::url($featuredNews->featured_image) }}"
+                                    alt="{{ $featuredNews->title }}"
                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                                 <div
                                     class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/70 to-transparent p-6">
@@ -70,7 +71,8 @@
                                 <a href="/noticia/{{ $newsItem->slug }}">
                                     <!-- Imagen -->
                                     <div class="relative overflow-hidden h-48">
-                                        <img src="{{ $newsItem->featured_image }}" alt="{{ $newsItem->title }}"
+                                        <img src="{{ Storage::url($newsItem->featured_image) }}"
+                                            alt="{{ $newsItem->title }}"
                                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                                         <!-- Categoría sobre la imagen -->
                                         <span
@@ -109,7 +111,8 @@
                                     <a href="/noticia/{{ $newsItem->slug }}" class="flex gap-4 w-full">
                                         <!-- Thumbnail -->
                                         <div class="flex-shrink-0 w-32 h-24 overflow-hidden rounded">
-                                            <img src="{{ $newsItem->featured_image }}" alt="{{ $newsItem->title }}"
+                                            <img src="{{ Storage::url($newsItem->featured_image) }}"
+                                                alt="{{ $newsItem->title }}"
                                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                                         </div>
                                         <!-- Contenido -->
@@ -209,7 +212,8 @@
                         <article class="group cursor-pointer">
                             <a href="/noticia/{{ $videoNews->slug }}">
                                 <div class="relative overflow-hidden rounded-lg h-48 mb-3">
-                                    <img src="{{ $videoNews->featured_image }}" alt="{{ $videoNews->title }}"
+                                    <img src="{{ Storage::url($videoNews->featured_image) }}"
+                                        alt="{{ $videoNews->title }}"
                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
                                         <i
