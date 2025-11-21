@@ -91,9 +91,6 @@ class NewsForm
                     FileUpload::make('featured_image')
                         ->label('Imagen Destacada')
                         ->image()
-                        // ->imageEditor()
-                        // ->imageEditorViewportWidth('1200')
-                        // ->imageEditorViewportHeight('800')
                         ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/jpg'])
                         ->disk('public') // ✅ Disco público
                         ->directory('news') // ✅ Subdirectorio específico
