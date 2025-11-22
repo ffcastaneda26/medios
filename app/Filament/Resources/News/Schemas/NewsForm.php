@@ -90,12 +90,22 @@ class NewsForm
                         ->required(),
                     FileUpload::make('featured_image')
                         ->label('Imagen Destacada')
-                        ->image()
-                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/jpg'])
-                        ->disk('public') // ✅ Disco público
-                        ->directory('news') // ✅ Subdirectorio específico
-                        ->visibility('public') // ✅ IMPORTANTE: Visibilidad pública
-                        ->maxSize(5120) // 5MB
+                        ->acceptedFileTypes([
+                            'image/jpeg',
+                            'image/png',
+                            'image/webp',
+                            'image/jpg',
+                            'image/gif', // ✅ GIF agregado
+                            'video/mp4', // ✅ Videos agregados
+                            'video/quicktime', // MOV
+                            'video/x-msvideo', // AVI
+                            'video/webm', // WebM
+                            'video/x-matroska', // MKV
+                        ])
+                        ->disk('public')
+                        ->directory('news')
+                        ->visibility('public')
+                        ->maxSize(51200) // 50MB (aumentado para videos)
                         ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
                             $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
                             $sanitizedName = Str::slug($originalName);
@@ -103,7 +113,7 @@ class NewsForm
 
                             return time().'_'.$sanitizedName.'.'.$extension;
                         })
-                        ->helperText('Tamaño máximo: 5MB. Formatos: JPG, PNG, WebP'),
+                        ->helperText('Tamaño máximo: 50MB. Formatos: JPG, PNG, WebP, GIF, MP4, MOV, AVI, WebM, MKV'),
 
                 ]),
                 Group::make()->schema([
