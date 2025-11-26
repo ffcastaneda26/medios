@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\News\Pages;
 
 use App\Filament\Resources\News\NewsResource;
+use Filament\Actions\Action;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -10,6 +11,18 @@ use Illuminate\Support\Str;
 class CreateNews extends CreateRecord
 {
     protected static string $resource = NewsResource::class;
+
+    protected function getCreateFormAction(): Action
+    {
+        return parent::getCreateFormAction()
+            ->label('Guardar');
+    }
+
+    protected function getCreateAnotherFormAction(): Action
+    {
+        return parent::getCreateAnotherFormAction()
+            ->label('Guardar y crear otro');
+    }
 
     // ✅ ASIGNAR USER_ID ANTES DE CREAR
     protected function mutateFormDataBeforeCreate(array $data): array

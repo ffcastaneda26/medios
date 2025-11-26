@@ -8,6 +8,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
@@ -51,7 +52,18 @@ class SponsorForm
                 FileUpload::make('logo')
                     ->label('Logotipo')
                     ->image()
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/jpg'])
+                    ->acceptedFileTypes([
+                        'image/jpeg',
+                        'image/png',
+                        'image/webp',
+                        'image/jpg',
+                        'image/gif', // ✅ GIF agregado
+                        'video/mp4', // ✅ Videos agregados
+                        'video/quicktime', // MOV
+                        'video/x-msvideo', // AVI
+                        'video/webm', // WebM
+                        'video/x-matroska', // MKV
+                    ])
                     ->disk('public')
                     ->directory('sponsors')
                     ->visibility('public')
@@ -63,8 +75,13 @@ class SponsorForm
 
                         return time().'_'.$sanitizedName.'.'.$extension;
                     })
-                    ->helperText('Tamaño máximo: 5MB. Formatos: JPG, PNG, WebP')
-                    ->columnSpanFull(),
+                    ->deleteUploadedFileUsing(function ($file) {
+                        if ($file && Storage::disk('public')->exists($file)) {
+                            Storage::disk('public')->delete($file);
+                        }
+                    })
+                    ->columnSpanFull()
+                    ->helperText('Tamaño máximo: 5MB. Formatos: JPG, PNG, WebP, GIF, MP4, MOV, AVI, WebM, MKV'),
             ]);
     }
 }
