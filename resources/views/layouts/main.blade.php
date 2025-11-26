@@ -29,11 +29,11 @@
                         <div class="flex items-center gap-3">
                             <!-- Redes Sociales y Ubicación -->
 
-                            @include('partials.socials')
+                            {{-- @include('partials.socials') --}}
                             {{-- Ubicación --}}
-                            <div class="hidden md:flex items-center gap-2 text-gray-700">
+                            {{-- <div class="hidden md:flex items-center gap-2 text-gray-700">
                                 @include('partials.ubication')
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
 

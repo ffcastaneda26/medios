@@ -9,6 +9,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
@@ -64,6 +65,11 @@ class ContactInfoForm
                             $extension = $file->getClientOriginalExtension();
 
                             return time().'_'.$sanitizedName.'.'.$extension;
+                        })
+                        ->deleteUploadedFileUsing(function ($file) {
+                            if ($file && Storage::disk('public')->exists($file)) {
+                                Storage::disk('public')->delete($file);
+                            }
                         })
                         ->helperText('Tamaño máximo: 5MB. Formatos: JPG, PNG, WebP')
                         ->columnSpanFull(),
