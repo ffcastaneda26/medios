@@ -11,7 +11,7 @@
                     @foreach ($sponsors as $sponsor)
                         <a href="{{ $sponsor->website }}" target="_blank" class="flex-shrink-0">
                             <img src="{{ Storage::url($sponsor->logo) }}" alt="{{ $sponsor->name }}"
-                                class="h-20 object-contain hover:opacity-80 transition-opacity">
+                                class="h-44 p-2 object-contain hover:opacity-80 transition-opacity">
                         </a>
                     @endforeach
                 </div>
