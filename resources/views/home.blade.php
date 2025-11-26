@@ -6,7 +6,7 @@
     <div class="space-y-6">
         <!-- Banner de Patrocinadores Principal (Horizontal) -->
         @if ($sponsors->isNotEmpty())
-            <div class="bg-white rounded-lg shadow-sm p-4 overflow-hidden">
+            <div class="bg-white rounded-lg shadow-sm p-4 overflow-hidden h-48">
                 <div class="flex items-center justify-center gap-6 overflow-x-auto">
                     @foreach ($sponsors as $sponsor)
                         <a href="{{ $sponsor->website }}" target="_blank" class="flex-shrink-0">

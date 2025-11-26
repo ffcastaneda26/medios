@@ -6,13 +6,7 @@
             <!-- Información del sitio -->
             <div class="grid md:grid-cols-3 gap-8 mb-6 pt-6 border-t border-gray-700">
                 <!-- Sobre nosotros -->
-                <div>
-                    <h4 class="text-lg font-bold mb-3">Sobre Nosotros</h4>
-                    <p class="text-gray-400 text-sm">
-                        {!! $contactInfo->about_text ?? 'Portal de noticias líder en información actualizada y confiable.' !!}
-                    </p>
-                </div>
-
+                @include('partials.about')
                 <!-- Contacto -->
                 <div>
                     <h4 class="text-lg font-bold mb-3">Contacto</h4>
