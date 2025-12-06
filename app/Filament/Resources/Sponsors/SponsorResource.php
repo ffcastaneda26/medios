@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Sponsors;
 use App\Filament\Resources\Sponsors\Pages\CreateSponsor;
 use App\Filament\Resources\Sponsors\Pages\EditSponsor;
 use App\Filament\Resources\Sponsors\Pages\ListSponsors;
+use App\Filament\Resources\Sponsors\RelationManagers\AdvertisementsRelationManager;
 use App\Filament\Resources\Sponsors\Schemas\SponsorForm;
 use App\Filament\Resources\Sponsors\Tables\SponsorsTable;
 use App\Models\Sponsor;
@@ -55,7 +56,7 @@ class SponsorResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            // AdvertisementsRelationManager::class,
         ];
     }
 
